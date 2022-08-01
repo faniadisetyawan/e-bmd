@@ -45,7 +45,7 @@ const BuildTree = ({ data }) => {
         </div>
       </div>
 
-      <Collapse in={open} dimension="width">
+      <Collapse in={open} dimension="height">
         <ul className="nav flex-column ms-3 children">
           {data.children?.map((route, i) => {
             if (!!route.children) {

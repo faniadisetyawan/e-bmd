@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { MySwal, useApp } from '../App';
-import { Button, Card, InputGroup, Form } from 'react-bootstrap';
+import { Button, Card, InputGroup, Form, Container, Row, Col } from 'react-bootstrap';
 import { VscAccount, VscKey } from 'react-icons/vsc';
 import AppLogo from '../shared/AppLogo';
 import { useFormik } from 'formik';
@@ -41,64 +41,72 @@ export default function Login() {
   });
 
   return (
-    <div className="py-5 d-flex flex-column align-items-center justify-content-center">
-      <Card body>
-        <div className="text-center">
-          <h3 className="fw-bolder">{config?.app_name}</h3>
+    <div className="py-5">
+      <Container>
+        <Row className="justify-content-center">
+          <Col md={3}>
+            <Card body>
+              <div className="text-center">
+                <h3 className="fw-bolder">{config?.app_name}</h3>
 
-          <AppLogo width={100} className="my-3" />
+                <AppLogo width={100} className="my-3" />
 
-          <p>Tahun Anggaran {config?.tahun_anggaran}</p>
-        </div>
+                <p>Tahun Anggaran {config?.tahun_anggaran}</p>
+              </div>
 
-        <br />
+              <br />
 
-        <Form noValidate onSubmit={formik.handleSubmit}>
-          <InputGroup className="mb-3">
-            <InputGroup.Text className="bg-white">
-              <VscAccount size={20} />
-            </InputGroup.Text>
-            <Form.Control
-              name="username"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              isInvalid={formik.touched.username && formik.errors.username}
-              placeholder="Username"
-              autoFocus
-            />
+              <Form noValidate onSubmit={formik.handleSubmit}>
+                <InputGroup className="mb-3">
+                  <InputGroup.Text className="bg-white">
+                    <VscAccount size={20} />
+                  </InputGroup.Text>
+                  <Form.Control
+                    name="username"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    isInvalid={formik.touched.username && formik.errors.username}
+                    className="bg-white"
+                    placeholder="Username"
+                    autoFocus
+                  />
 
-            {formik.touched.username && formik.errors.username && (
-              <Form.Control.Feedback type="invalid">{formik.errors.username}</Form.Control.Feedback>
-            )}
-          </InputGroup>
+                  {formik.touched.username && formik.errors.username && (
+                    <Form.Control.Feedback type="invalid">{formik.errors.username}</Form.Control.Feedback>
+                  )}
+                </InputGroup>
 
-          <InputGroup className="mb-4">
-            <InputGroup.Text className="bg-white">
-              <VscKey size={20} />
-            </InputGroup.Text>
-            <Form.Control
-              type="password"
-              name="password"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              isInvalid={formik.touched.password && formik.errors.password}
-              placeholder="Password"
-            />
+                <InputGroup className="mb-4">
+                  <InputGroup.Text className="bg-white">
+                    <VscKey size={20} />
+                  </InputGroup.Text>
+                  <Form.Control
+                    type="password"
+                    name="password"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    isInvalid={formik.touched.password && formik.errors.password}
+                    className="bg-white"
+                    placeholder="Password"
+                  />
 
-            {formik.touched.password && formik.errors.password && (
-              <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
-            )}
-          </InputGroup>
+                  {formik.touched.password && formik.errors.password && (
+                    <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
+                  )}
+                </InputGroup>
 
-          <div className="d-flex align-items-center justify-content-between">
-            <Button type="submit" variant="primary">
-              {formik.isSubmitting ? "Processing..." : "Log in"}
-            </Button>
+                <div className="d-flex align-items-center justify-content-between">
+                  <Button type="submit" variant="primary">
+                    {formik.isSubmitting ? "Processing..." : "Log in"}
+                  </Button>
 
-            <Button as={Link} to="/" variant="link">Homepage</Button>
-          </div>
-        </Form>
-      </Card>
+                  <Button as={Link} to="/" variant="link">Homepage</Button>
+                </div>
+              </Form>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     </div>
   )
 }

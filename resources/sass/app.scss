@@ -131,6 +131,10 @@
   }
 }
 
+.card {
+  @extend .shadow;
+}
+
 .table {
   @extend .mb-0;
 }
